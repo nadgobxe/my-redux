@@ -1,24 +1,58 @@
 import * as actions from '../actions/actionTypes'
 
+export const categories = {
+    categories: {
+        sofas: {
+            name: "Sofas",
+            icon: "couch", // FontAwesome icon key for sofas
+        },
+        boxes: {
+            name: "Sofas",
+            icon: "box", // FontAwesome icon key for sofas
+        }
+    },
+}
+
 const initialState = {
-    removalsItems: [
-        {
-            id: 1,
-            itemName: "2 Seat Sofa",
-            volume: 150,
-            qty: 1,
-            src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
-            buttonStatus: false
-        },
-        {
-            id: 2,
-            itemName: "3 Seat Sofa",
-            volume: 175,
-            qty: 1,
-            src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
-            buttonStatus: false
-        },
-    ],
+
+    removalsItems: {
+        sofas: [
+            {
+                id: 1,
+                itemName: "2 Seat Sofa",
+                volume: 150,
+                qty: 1,
+                src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
+                buttonStatus: false
+            },
+            {
+                id: 2,
+                itemName: "3 Seat Sofa",
+                volume: 175,
+                qty: 1,
+                src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
+                buttonStatus: false
+            },
+        ],
+        boxes: [
+            {
+                id: 1,
+                itemName: "2 Seat Sofa",
+                volume: 150,
+                qty: 1,
+                src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
+                buttonStatus: false
+            },
+            {
+                id: 2,
+                itemName: "3 Seat Sofa",
+                volume: 175,
+                qty: 1,
+                src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
+                buttonStatus: false
+            },
+        ]
+    },
     movingList: []
 };
 

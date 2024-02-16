@@ -2,6 +2,11 @@ import React from 'react';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from "./actions/actions";
+import RemovalsItemsDisplay from './components/calc/RemovalsItems/RemovalItems';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// Import specific icons
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 function App() {
   const { removalsItems, movingList } = useSelector(state => state);
@@ -37,39 +42,29 @@ function App() {
 
   return (
     <>
-      <div className="grid">
-        {removalsItems && removalsItems.map((item, index) => (
-          <div className="box" key={index}>
-            <div className="innerBox">
-              <div className="icon">
-                <img src={item.src} alt={item.itemName} height="36px" />
-              </div>
-              <div className="title">{item.itemName}</div>
-              <div className="volume">{item.volume}</div>
-              <button onClick={() => handleAddToMoveList(item)}>Add to Move List</button>
-            </div>
-          </div>
-        ))}
-      </div>
+      <div className='flex flex-col p-4 mx-auto'>
+        <div className="flex flex-row">
+        <RemovalsItemsDisplay removalsItems={removalsItems} handleAddToMoveList={handleAddToMoveList}  />
+        </div>
 
-      <div className="grid">
-        {movingList && movingList.map((item, index) => (
-          <div className="box" key={index}>
-            <div className="innerBox">
-              <div className="icon">
-                <img src={item.src} alt={item.itemName} height="36px" />
+        <div className="grid">
+          {movingList && movingList.map((item, index) => (
+            <div className="box" key={index}>
+              <div className="innerBox">
+                <div className="icon">
+                  <img src={item.src} alt={item.itemName} height="36px" />
+                </div>
+                <div className="title">{item.itemName}</div>
+                <div className="volume">{item.volume}</div>
+                <div className="qty">{item.qty}</div>
+                <button onClick={() => handleRemovefromMoveList(item)}>Remove from Move List</button>
+                <button onClick={() => handleINCR(item)}>+</button>
+                <button disabled={item.buttonStatus} onClick={() => handleDECR(item)}>-</button>
               </div>
-              <div className="title">{item.itemName}</div>
-              <div className="volume">{item.volume}</div>
-              <div className="qty">{item.qty}</div>
-              <button onClick={() => handleRemovefromMoveList(item)}>Remove from Move List</button>
-              <button onClick={() => handleINCR(item)}>+</button>
-              <button disabled={item.buttonStatus} onClick={() => handleDECR(item)}>-</button>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-
     </>);
 
 }
