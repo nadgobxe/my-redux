@@ -1,9 +1,11 @@
-import React from 'react';
+import * as React from "react";
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from "./actions/actions";
 import RemovalsItemsDisplay from './components/calc/RemovalsItems/RemovalItems';
 import TotalVolumeDisplay from './components/calc/RemovalsItems/TotalVolumeDisplay';
+import AddList from './components/calc/AddList';
+import {NextUIProvider} from "@nextui-org/react";
 
 function App() {
   const { removalsItems, movingList, totalVolume } = useSelector(state => state);
@@ -38,32 +40,18 @@ function App() {
   } 
 
   return (
-    <>
+    <NextUIProvider>
       <div className='flex flex-col p-4 mx-auto'>
         <div className="flex flex-row">
         <RemovalsItemsDisplay removalsItems={removalsItems} handleAddToMoveList={handleAddToMoveList}  />
         </div>
 
         <div className="grid">
-          {movingList && movingList.map((item, index) => (
-            <div className="box" key={index}>
-              <div className="innerBox">
-                <div className="icon">
-                  <img src={item.src} alt={item.itemName} height="36px" />
-                </div>
-                <div className="title">{item.itemName}</div>
-                <div className="volume">{item.volume}</div>
-                <div className="qty">{item.qty}</div>
-                <button onClick={() => handleRemovefromMoveList(item)}>Remove from Move List</button>
-                <button onClick={() => handleINCR(item)}>+</button>
-                <button disabled={item.buttonStatus} onClick={() => handleDECR(item)}>-</button>
-              </div>
-            </div>
-          ))}
+            <AddList movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} />
              <TotalVolumeDisplay movingList={movingList} />
         </div>
       </div>
-    </>);
+      </NextUIProvider>);
 
 
 }
