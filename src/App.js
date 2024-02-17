@@ -3,13 +3,10 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from "./actions/actions";
 import RemovalsItemsDisplay from './components/calc/RemovalsItems/RemovalItems';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// Import specific icons
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import TotalVolumeDisplay from './components/calc/RemovalsItems/TotalVolumeDisplay';
 
 function App() {
-  const { removalsItems, movingList } = useSelector(state => state);
+  const { removalsItems, movingList, totalVolume } = useSelector(state => state);
 
 
   const dispatch = useDispatch();
@@ -18,27 +15,27 @@ function App() {
 
   const handleAddToMoveList = (item) => {
     dispatch(actions.addItem(item)); // Dispatching an action with the item
-    // Removed console.log(state.getState()) - useSelector can be used to access specific parts of the state
     console.log(movingList)
   }
 
   const handleRemovefromMoveList = (item) => {
     dispatch(actions.removeItem(item)); // Dispatching an action with the item
-    // Removed console.log(state.getState()) - useSelector can be used to access specific parts of the state
     console.log(movingList)
   }
 
   const handleINCR = (item) => {
     dispatch(actions.incrItem(item)); // Dispatching an action with the item
-    // Removed console.log(state.getState()) - useSelector can be used to access specific parts of the state
     console.log(movingList)
   }
 
   const handleDECR = (item) => {
     dispatch(actions.decrItem(item)); // Dispatching an action with the item
-    // Removed console.log(state.getState()) - useSelector can be used to access specific parts of the state
     console.log(movingList)
   }
+
+  const refreshVolume = () => {
+    dispatch(actions.calcVolume());
+  } 
 
   return (
     <>
@@ -63,9 +60,11 @@ function App() {
               </div>
             </div>
           ))}
+             <TotalVolumeDisplay movingList={movingList} />
         </div>
       </div>
     </>);
+
 
 }
 

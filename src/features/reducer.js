@@ -1,60 +1,53 @@
 import * as actions from '../actions/actionTypes'
 
-export const categories = {
-    categories: {
-        sofas: {
-            name: "Sofas",
-            icon: "couch", // FontAwesome icon key for sofas
-        },
-        boxes: {
-            name: "Sofas",
-            icon: "box", // FontAwesome icon key for sofas
-        }
-    },
-}
-
 const initialState = {
-
     removalsItems: {
-        sofas: [
-            {
-                id: 1,
-                itemName: "2 Seat Sofa",
-                volume: 150,
-                qty: 1,
-                src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
-                buttonStatus: false
-            },
-            {
-                id: 2,
-                itemName: "3 Seat Sofa",
-                volume: 175,
-                qty: 1,
-                src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
-                buttonStatus: false
-            },
+      sofas: {
+        logo: "couch", // URL to the sofa logo
+        items: [
+          {
+            id: 1,
+            itemName: "2 Seat Sofa",
+            volume: 150,
+            qty: 1,
+            src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
+            buttonStatus: false,
+          },
+          {
+            id: 2,
+            itemName: "3 Seat Sofa",
+            volume: 175,
+            qty: 1,
+            src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
+            buttonStatus: false,
+          },
         ],
-        boxes: [
-            {
-                id: 1,
-                itemName: "2 Seat Sofa",
-                volume: 150,
-                qty: 1,
-                src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
-                buttonStatus: false
-            },
-            {
-                id: 2,
-                itemName: "3 Seat Sofa",
-                volume: 175,
-                qty: 1,
-                src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
-                buttonStatus: false
-            },
-        ]
+      },
+      boxes: {
+        logo: "box", // URL to the box logo
+        items: [
+          {
+            id: 3,
+            itemName: "Small Box",
+            volume: 50,
+            qty: 1,
+            src: "https://cdn-icons-png.flaticon.com/512/679/679821.png",
+            buttonStatus: false,
+          },
+          {
+            id: 4,
+            itemName: "Large Box",
+            volume: 100,
+            qty: 1,
+            src: "https://cdn-icons-png.flaticon.com/512/679/679821.png",
+            buttonStatus: false,
+          },
+        ],
+      },
     },
-    movingList: []
-};
+    movingList: [],
+    totalVolume: [],
+  };
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -91,6 +84,14 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 movingList: updatedMovingList,
             };
+            case actions.CALC_VOLUME: {
+                const totalVolume = state.movingList.reduce((acc, curr) => acc + curr.volume * curr.qty, 0); // Calculate total volume
+                return {
+                  ...state,
+                  totalVolume, // Store the calculated total volume
+                };
+              }
+              
 
         default:
             return state;
