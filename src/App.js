@@ -48,7 +48,6 @@ function App() {
 
         <div className="grid">
             <AddList movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} />
-             <TotalVolumeDisplay movingList={movingList} />
         </div>
       </div>
       </NextUIProvider>);
