@@ -2,9 +2,8 @@ import * as React from "react";
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from "./actions/actions";
-import RemovalsItemsDisplay from './components/calc/RemovalsItems/RemovalItems';
-import AddList from './components/calc/AddList';
 import {NextUIProvider} from "@nextui-org/react";
+import MainRemovalsPage from "./components/calc/RemovalsItems/MainRemovalsPage";
 
 function App() {
   const { removalsItems, movingList } = useSelector(state => state);
@@ -36,16 +35,8 @@ function App() {
 
   return (
     <NextUIProvider>
-      <div className='flex flex-col p-4 mx-auto'>
-        <div className="flex flex-row">
-        <RemovalsItemsDisplay removalsItems={removalsItems} handleAddToMoveList={handleAddToMoveList}  />
-        </div>
-
-        <div className="grid">
-            <AddList movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} />
-        </div>
-      </div>
-      </NextUIProvider>);
+      <MainRemovalsPage movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} removalsItems={removalsItems} handleAddToMoveList={handleAddToMoveList}/>
+    </NextUIProvider>);
 
 
 }
