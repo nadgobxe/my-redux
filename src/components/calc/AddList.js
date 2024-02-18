@@ -13,6 +13,7 @@ import {
 } from "@nextui-org/react";
 import TotalVolumeDisplay from "./RemovalsItems/TotalVolumeDisplay";
 import NumberMovingList from "./RemovalsItems/NumberMovingList";
+import MovingListItem from "./RemovalsItems/MovingListItem";
 
 library.add(fas);
 
@@ -42,50 +43,7 @@ const AddList = ({
                             </div>
                         </CardHeader>
                         <Divider />
-                        {movingList &&
-                            movingList.map((item, index) => (
-                                <CardBody className="flex flex-row gap-1 items-center" key={index}>
-                                    <Image
-                                        alt={item.itemName}
-                                        height={20}
-                                        radius="sm"
-                                        src={item.src}
-                                        width={20}
-                                    />
-                                    <div className="flex flex-col">
-                                        <div className="flex flex-row gap-1 content-between items-center">
-                                            <p>{item.itemName}</p>
-                                            <p className="text-small text-default-500">Qty: {item.qty}</p>
-                                            <Button
-                                                size="sm"
-                                                color="primary"
-                                                variant="bordered"
-                                                onClick={() => handleINCR(item)}
-                                            >
-                                                +
-                                            </Button>
-                                            <Button
-                                                size="sm"
-                                                color="primary"
-                                                variant="bordered"
-                                                disabled={item.buttonStatus}
-                                                onClick={() => handleDECR(item)}
-                                            >
-                                                -
-                                            </Button>
-                                            <Button
-                                                size="sm"
-                                                color="primary"
-                                                variant="bordered"
-                                                onClick={() => handleRemovefromMoveList(item)}
-                                            >
-                                                {" "}
-                                                [-] Remove
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </CardBody>
-                            ))}
+                        <MovingListItem movingList={movingList}   handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} />
                         <Divider />
                         <CardFooter>
                             <TotalVolumeDisplay movingList={movingList} />

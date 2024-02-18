@@ -3,7 +3,12 @@ import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, Navba
 import NavigationBar from "../RemovalsItems/NotificationNumberMovingList/NotificationBar.js";
 import {AcmeLogo} from "./AcmeLogo.js";
 
-export default function Header() {
+export default function Header({
+    movingList,
+    handleRemovefromMoveList,
+    handleINCR,
+    handleDECR,
+}) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
@@ -68,7 +73,7 @@ export default function Header() {
           </Button>
         </NavbarItem>
         <NavbarItem>
-            <NavigationBar />
+            <NavigationBar movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} />
         </NavbarItem>
       </NavbarContent>
 

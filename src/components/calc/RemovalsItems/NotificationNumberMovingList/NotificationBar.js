@@ -15,16 +15,22 @@ import {
     PopoverContent,
 } from "@nextui-org/react";
 import NotificationNumberMovingList from "./NotificationNumberMovingList";
+import PopOverContentHeader from "../../header/PopOverContentHeader";
 
 library.add(fas);
 
-const NavigationBar = () => {
+const NavigationBar = ({
+    movingList,
+    handleRemovefromMoveList,
+    handleINCR,
+    handleDECR,
+}) => {
     return (
         <div>
             <Popover placement="bottom" showArrow={true}> 
-                        <NotificationNumberMovingList /> {/*</PopoverTrigger> is incorporated in the NotificationNumberMovingList component for being able to toggle on/off when clicking on the clipboard*/}
+                        <NotificationNumberMovingList />  
                 <PopoverContent>
-                  <div>Hello</div>
+                  <PopOverContentHeader movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} />
                 </PopoverContent>
             </Popover>
 

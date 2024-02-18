@@ -36,7 +36,7 @@ function App() {
 
   return (
     <NextUIProvider>
-      <Header />
+      <Header movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} />
       <MainRemovalsPage movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} removalsItems={removalsItems} handleAddToMoveList={handleAddToMoveList}/>
     </NextUIProvider>);
 
