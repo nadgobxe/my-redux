@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from "./actions/actions";
 import {NextUIProvider} from "@nextui-org/react";
 import MainRemovalsPage from "./components/calc/RemovalsItems/MainRemovalsPage";
+import Header from "./components/calc/header/Header";
 
 function App() {
   const { removalsItems, movingList } = useSelector(state => state);
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <NextUIProvider>
+      <Header />
       <MainRemovalsPage movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} removalsItems={removalsItems} handleAddToMoveList={handleAddToMoveList}/>
     </NextUIProvider>);
 
