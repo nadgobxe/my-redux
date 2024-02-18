@@ -9,7 +9,7 @@ library.add(fas);
 
 const RemovalsItemsDisplay = ({ removalsItems, handleAddToMoveList }) => {
     return (
-        <Card className="max-w-[400px] w-full p-4 mb-4" >
+        <Card isHoverable={true} className="max-w-[400px] w-full p-4 mb-4">
 
                 {Object.keys(removalsItems).map((category) => (
                     <div key={category}>
