@@ -3,12 +3,11 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from "./actions/actions";
 import RemovalsItemsDisplay from './components/calc/RemovalsItems/RemovalItems';
-import TotalVolumeDisplay from './components/calc/RemovalsItems/TotalVolumeDisplay';
 import AddList from './components/calc/AddList';
 import {NextUIProvider} from "@nextui-org/react";
 
 function App() {
-  const { removalsItems, movingList, totalVolume } = useSelector(state => state);
+  const { removalsItems, movingList } = useSelector(state => state);
 
 
   const dispatch = useDispatch();
@@ -34,10 +33,6 @@ function App() {
     dispatch(actions.decrItem(item)); // Dispatching an action with the item
     console.log(movingList)
   }
-
-  const refreshVolume = () => {
-    dispatch(actions.calcVolume());
-  } 
 
   return (
     <NextUIProvider>

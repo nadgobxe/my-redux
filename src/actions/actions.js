@@ -20,7 +20,3 @@ export const decrItem = item => ({
     payload: item
 })
 
-export const calcVolume = item => ({
-    type: actions.CALC_VOLUME,
-})
-
