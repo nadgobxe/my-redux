@@ -19,7 +19,7 @@ const AddList = ({ movingList, handleRemovefromMoveList, handleINCR, handleDECR 
                         alt="Junior"
                         height={40}
                         radius="sm"
-                        src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                        src="https://holdemremovals.co.uk/wp-content/uploads/2017/03/movepack-200x200.png"
                         width={40}
                     />
                     <div className="flex flex-col">
@@ -49,13 +49,7 @@ const AddList = ({ movingList, handleRemovefromMoveList, handleINCR, handleDECR 
                     </CardBody>))}
                 <Divider />
                 <CardFooter>
-                    <Link
-                        isExternal
-                        showAnchorIcon
-                        href="https://github.com/nextui-org/nextui"
-                    >
                         <TotalVolumeDisplay movingList={movingList} />
-                    </Link>
                 </CardFooter>
             </Card>
 

@@ -9,7 +9,7 @@ const TotalVolumeDisplay = () => {
     return movingList.reduce((acc, curr) => acc + curr.volume, 0);
   }, [movingList]); // Dependency array to ensure calculation runs only when movingList changes
 
-  return <h2>Total Volume: {totalVolume}</h2>;
+  return <h2 className="font-bold text-2xl">Total Volume: {totalVolume}</h2>;
 };
 
 export default TotalVolumeDisplay;
