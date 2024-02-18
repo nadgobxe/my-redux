@@ -1,15 +1,12 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import {
     Card,
     CardHeader,
-    CardBody,
     CardFooter,
     Divider,
     Image,
-    Button,
 } from "@nextui-org/react";
 import TotalVolumeDisplay from "./RemovalsItems/TotalVolumeDisplay";
 import NumberMovingList from "./RemovalsItems/NumberMovingList";
