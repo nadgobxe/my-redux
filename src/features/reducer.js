@@ -12,6 +12,7 @@ const initialState = {
                     qty: 1,
                     src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
                     buttonStatus: false,
+                    addButton: false,
                 },
                 {
                     id: 2,
@@ -20,6 +21,7 @@ const initialState = {
                     qty: 1,
                     src: "https://png.pngtree.com/png-vector/20190405/ourmid/pngtree-vector-sofa-icon-png-image_912196.jpg",
                     buttonStatus: false,
+                    addButton: false,
                 },
             ],
         },
@@ -33,6 +35,7 @@ const initialState = {
                     qty: 1,
                     src: "https://cdn-icons-png.flaticon.com/512/679/679821.png",
                     buttonStatus: false,
+                    addButton: false,
                 },
                 {
                     id: 4,
@@ -41,6 +44,7 @@ const initialState = {
                     qty: 1,
                     src: "https://cdn-icons-png.flaticon.com/512/679/679821.png",
                     buttonStatus: false,
+                    addButton: false,
                 },
             ],
         },
@@ -60,7 +64,8 @@ export default function reducer(state = initialState, action) {
             if (!itemExistsInRemovals) {
                 return {
                     ...state,
-                    movingList: [...state.movingList, action.payload], // Use spread for immutability
+                    movingList: [...state.movingList, action.payload],
+                     // Use spread for immutability
                 };
             }
 
@@ -68,7 +73,31 @@ export default function reducer(state = initialState, action) {
             return state;
         }
 
-
+        case actions.UPDATE_BOOLEN_VALUE: {
+            const { id } = action.payload;
+            
+            // Create a new object for removalsItems to avoid mutation
+            const updatedRemovalsItems = Object.entries(state.removalsItems).reduce((acc, [categoryKey, categoryValue]) => {
+                // Clone the category object, including the items array
+                const itemsUpdated = categoryValue.items.map(item => {
+                    // Toggle the addButton for the item matching the id
+                    if (item.id === id) {
+                        return { ...item, addButton: !item.addButton };
+                    }
+                    return item;
+                });
+        
+                // Update the accumulator with the updated category
+                acc[categoryKey] = { ...categoryValue, items: itemsUpdated };
+                return acc;
+            }, {});
+        
+            return {
+                ...state,
+                removalsItems: updatedRemovalsItems,
+            };
+        }
+        
         case actions.REMOVE_ITEM:
             return {
                 ...state,

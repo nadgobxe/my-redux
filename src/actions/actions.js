@@ -20,3 +20,7 @@ export const decrItem = item => ({
     payload: item
 })
 
+export const updateBooleanValue = item => ({
+    type: actions.UPDATE_BOOLEN_VALUE,
+    payload: item
+})

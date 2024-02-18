@@ -34,10 +34,14 @@ function App() {
     console.log(movingList)
   }
 
+  const updateBooleanValue = (item) => {
+    dispatch(actions.updateBooleanValue(item)); // Dispatching an action with the item
+  }
+
   return (
     <NextUIProvider>
       <Header movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} />
-      <MainRemovalsPage movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} removalsItems={removalsItems} handleAddToMoveList={handleAddToMoveList}/>
+      <MainRemovalsPage movingList={movingList} handleRemovefromMoveList={handleRemovefromMoveList} handleINCR={handleINCR} handleDECR={handleDECR} removalsItems={removalsItems} handleAddToMoveList={handleAddToMoveList} updateBooleanValue={updateBooleanValue}/>
     </NextUIProvider>);
 
 
