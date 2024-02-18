@@ -5,6 +5,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button } from "@nextui-org/react";
 import TotalVolumeDisplay from './RemovalsItems/TotalVolumeDisplay';
 import NumberMovingList from './RemovalsItems/NumberMovingList';
+import NotificationNumberMovingList from './RemovalsItems/NotificationNumberMovingList/NotificationNumberMovingList';
 
 
 library.add(fas);
@@ -25,6 +26,7 @@ const AddList = ({ movingList, handleRemovefromMoveList, handleINCR, handleDECR 
                     <div className="flex flex-col">
                         <p className="text-md">Moving List(<NumberMovingList />)</p>
                         <p className="text-small text-default-500">Hello</p>
+                        <NotificationNumberMovingList />
                     </div>
                 </CardHeader>
                 <Divider />
